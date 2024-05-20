@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7912083296182729693}
   - component: {fileID: 6130416792249647998}
   m_Layer: 0
-  m_Name: Tile
+  m_Name: TileRoadCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7785935183742504091}
-  m_Mesh: {fileID: -2432090755550338912, guid: 5076ba01f21af0c4daff73ab13dba476, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 626410dc07212d749823da2540a223bb, type: 3}
 --- !u!23 &813331632226239102
 MeshRenderer:
   m_ObjectHideFlags: 0
