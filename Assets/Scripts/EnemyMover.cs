@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Enemy))]
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField]
@@ -13,13 +14,15 @@ public class EnemyMover : MonoBehaviour
     Enemy enemy;
 
     // Start is called before the first frame update
-    void OnEnable() {       
+    void OnEnable()
+    {
         FindPath();
         ReturnToStart();
         StartCoroutine(FollowPath());
     }
 
-    private void Start() {
+    private void Start()
+    {
         enemy = GetComponent<Enemy>();
     }
 
@@ -31,13 +34,24 @@ public class EnemyMover : MonoBehaviour
 
         foreach (Transform child in parent.transform)
         {
-            path.Add(child.GetComponent<Waypoint>());
+            Waypoint waypoint = child.GetComponent<Waypoint>();
+
+            if (waypoint != null)
+            {
+                path.Add(waypoint);
+            }
         }
     }
 
     void ReturnToStart()
     {
         transform.position = path[0].transform.position;
+    }
+
+    void FinishPath()
+    {
+        enemy.StealGold();
+        gameObject.SetActive(false);
     }
 
     IEnumerator FollowPath()
@@ -58,7 +72,6 @@ public class EnemyMover : MonoBehaviour
             }
         }
 
-        enemy.StealGold();
-        gameObject.SetActive(false);
+        FinishPath();
     }
 }
